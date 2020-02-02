@@ -17,10 +17,6 @@ public class User implements Serializable {
 		this.isEmployee = isEmployee;
 	}
 	
-	
-	
-	
-	
 	public String getUsername() {
 		return username;
 	}
@@ -43,7 +39,7 @@ public class User implements Serializable {
 	
 	@Override
 	public String toString() {
-		return username + " " +password + " " + isEmployee;
+		return "User [username=" + username + ", password=" + password + ", isEmployee=" + isEmployee + "]";
 	}
 
 	@Override

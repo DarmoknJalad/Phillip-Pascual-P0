@@ -1,4 +1,4 @@
-package com.phillippascual.util;
+package com.phillippascual.data;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -10,44 +10,47 @@ import java.util.ArrayList;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
-public class UserData {
-	private static Logger log = Logger.getLogger(UserData.class);
+import com.phillippascual.util.Movie;
+
+public class MovieData {
+	private static Logger log = Logger.getLogger(MovieData.class);
 	static {
 		BasicConfigurator.configure();
 	}
 	
-	private static ArrayList<User> users = new ArrayList<User>();
+	private static ArrayList<Movie> movies = new ArrayList<Movie>();
 	
-	public UserData() {
-
-	}
-
 	public static void save() throws IOException {
-		FileOutputStream fileOut = new FileOutputStream("logins.ser");
+		FileOutputStream fileOut = new FileOutputStream("movies.ser");
 		ObjectOutputStream outputStream = new ObjectOutputStream(fileOut);
-		outputStream.writeObject(users);
+		outputStream.writeObject(movies);
 		outputStream.close();
 		fileOut.close();
-		log.debug("Users saved.");
+		log.debug("Movies saved.");
 	}
 	
 	@SuppressWarnings("unchecked")
 	public static void load() throws IOException {
-		FileInputStream fileIn = new FileInputStream("logins.ser");
+		FileInputStream fileIn = new FileInputStream("movies.ser");
 		ObjectInputStream inputStream = new ObjectInputStream(fileIn);
 		try {
-			users = (ArrayList<User>) inputStream.readObject();
+			movies = (ArrayList<Movie>) inputStream.readObject();
+			log.debug("Movies file loaded.");
 		} catch (ClassNotFoundException e) {
-			log.debug("Users file not found!");
+			log.debug("Movies file not found!");
 			e.printStackTrace();
 		}
 		inputStream.close();
 		fileIn.close();
 	}
 	
-	public void addUser(User user) {
-		users.add(user);
-		log.debug("User added.");
+	public static void addMovie(Movie movie) {
+		movies.add(movie);
+		log.debug("Movie added.");
+		try {
+			save();
+		} catch (IOException e) {
+			log.debug("Unable to save movie.");
+		}
 	}
-
 }
