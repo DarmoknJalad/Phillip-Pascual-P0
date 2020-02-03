@@ -50,7 +50,7 @@ public class UserData {
 		users.add(user);
 		log.debug("User added.");
 		try {
-			save();e
+			save();
 		} catch (IOException e) {
 			log.debug("Unable to save users.");
 		}

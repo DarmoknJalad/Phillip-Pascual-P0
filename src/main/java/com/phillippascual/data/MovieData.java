@@ -62,7 +62,7 @@ public class MovieData {
 		System.out.println("-----------");
 		System.out.println("");
 		for (Movie m : movies) {
-			System.out.println(m.toString());
+			System.out.println(m.printMovie());
 		}
 		System.out.println();
 		
@@ -71,5 +71,20 @@ public class MovieData {
 		} else {
 			Customer.customerMenu();
 		}
+	}
+	
+	public static void addInventory(String movie, int num) {
+		for (Movie m : movies) {
+			if (m.getName().equals(movie)) {
+				m.setNumberInStock(m.getNumberInStock() + num);
+				try {
+					save();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		System.out.println("Movie not found.");
 	}
 }

@@ -10,11 +10,13 @@ public class Movie implements Serializable {
 	private String name;
 	private String genre;
 	private String description;
+	private int numberInStock;
 	
 	public Movie(String name, String genre, String description) {
 		this.name = name;
 		this.genre = genre;
 		this.description = description;
+		this.numberInStock = 1;	//Setting default in inventory when movie added to 1
 	}
 
 	public String getName() {
@@ -40,6 +42,14 @@ public class Movie implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	public int getNumberInStock() {
+		return numberInStock;
+	}
+
+	public void setNumberInStock(int numberInStock) {
+		this.numberInStock = numberInStock;
+	}
 
 	@Override
 	public int hashCode() {
@@ -48,6 +58,7 @@ public class Movie implements Serializable {
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((genre == null) ? 0 : genre.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + numberInStock;
 		return result;
 	}
 
@@ -75,13 +86,25 @@ public class Movie implements Serializable {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
+		if (numberInStock != other.numberInStock)
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Movie [name=" + name + ", genre=" + genre + ", description=" + description + "]";
+		return "Name = " + name + ", Genre = " + genre + ", Description = " + description + ", Number Available = "
+				+ numberInStock + "]";
 	}
+	
+	public String printMovie() {
+		return "Name = " + name + "; Genre = " + genre + "; Description = " + description + "; Number Available = "
+				+ numberInStock;
+	}
+
+	
+	
+	
 	
 	
 }
