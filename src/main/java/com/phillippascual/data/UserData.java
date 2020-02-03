@@ -19,9 +19,9 @@ public class UserData {
 	static {
 		BasicConfigurator.configure();
 	}
-	
+
 	private static ArrayList<User> users = new ArrayList<User>();
-	
+
 	public static void save() throws IOException {
 		FileOutputStream fileOut = new FileOutputStream("logins.ser");
 		ObjectOutputStream outputStream = new ObjectOutputStream(fileOut);
@@ -30,7 +30,7 @@ public class UserData {
 		fileOut.close();
 		log.debug("Users saved.");
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public static void load() throws IOException {
 		FileInputStream fileIn = new FileInputStream("logins.ser");
@@ -45,7 +45,7 @@ public class UserData {
 		inputStream.close();
 		fileIn.close();
 	}
-	
+
 	public static void addUser(User user) {
 		users.add(user);
 		log.debug("User added.");
@@ -55,27 +55,32 @@ public class UserData {
 			log.debug("Unable to save users.");
 		}
 	}
-	
-	public static void validateLogin(String username, String password) {
+
+	public static boolean validateLogin(String username, String password) {
 		for (User u : users) {
 			if (u.getUsername().equals(username) && u.getPassword().equals(password) && u.isEmployee()) {
-				Employee.employeeMenu();
-			} else if (u.getUsername().equals(username) && u.getPassword().equals(password) && !u.isEmployee()) {
-				//User is a customer, divert to customer functionality
-			} else {
-				//User not found
-				System.out.println("User not found!");
-				Login.loginMenu();	//Throw user back to the login menu to try again.
+//				Employee.employeeMenu();
+				return true;
+			} if (u.getUsername().equals(username) && u.getPassword().equals(password) && !u.isEmployee()) {
+				return false;
 			}
 		}
-		return;
+		//User not found
+		System.out.println("User not found!");
+		Login.loginMenu();	//Throw user back to the login menu to try again.
+		return false;
+
 	}
-	
+
 	public static void listUsers() {
+		System.out.println("User list:");
+		System.out.println("----------");
 		for (User u : users) {
-			u.toString();
-			
+			System.out.println(u.toString());
 		}
+		System.out.println("");
+		// Return user back to administrator menu once done listing users
+		Employee.adminMenu();
 	}
 
 }

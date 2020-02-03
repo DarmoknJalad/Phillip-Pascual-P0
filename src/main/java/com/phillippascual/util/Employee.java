@@ -2,6 +2,7 @@ package com.phillippascual.util;
 
 import java.util.Scanner;
 
+import com.phillippascual.data.MovieData;
 import com.phillippascual.data.UserData;
 
 public class Employee {
@@ -9,12 +10,15 @@ public class Employee {
 	private static String input;
 	static String username;
 	static String password;
+	static String name;
+	static String genre;
+	static String description;
 
 	public static void adminMenu() {
 		System.out.println("ADMINISTRATOR MENU");
 		System.out.println("Add (e)mployee.");
 		System.out.println("Add (c)ustomer.");
-//		System.out.println("List (u)sers.");
+		System.out.println("List u(s)ers.");
 		System.out.println("(L)ogout.");
 		System.out.println("");
 		System.out.print("Please enter option: ");
@@ -25,8 +29,8 @@ public class Employee {
 			addEmployee();
 		} else if (input.equals("c")) {
 			addCustomer();
-//		} else if (input.equals("u")) {
-//			UserData.listUsers();
+		} else if (input.equals("s")) {
+			UserData.listUsers();
 		} else if (input.equals("l")) {
 			System.out.println("Logging out...");
 			System.out.println("");
@@ -41,6 +45,7 @@ public class Employee {
 		System.out.println("EMPLOYEE MENU");
 		System.out.println("Add (c)ustomer.");
 		System.out.println("Add (m)ovie.");
+		System.out.println("List movie(s).");
 		System.out.println("(L)ogout.");
 		System.out.println("");
 		System.out.print("Please enter option: ");
@@ -48,10 +53,16 @@ public class Employee {
 		input = scan.next();
 		
 		if (input.equals("c")) {
+			//Go to add customer functionality
 			System.out.println("");
 			addCustomer();
 		} else if (input.equals("m")) {
-			//Go to add movie functionality
+			//Go to create movie functionality
+			System.out.println("");
+			addMovie();
+		} else if (input.equals("s")) {
+			//Go to list movie method
+			MovieData.listMovies();
 		} else if (input.equals("l")) {
 			System.out.println("Logging out...");
 			System.out.println("");
@@ -76,6 +87,9 @@ public class Employee {
 	}
 	
 	public static void addCustomer() {
+		//Clears the buffer
+		scan.nextLine();
+		
 		System.out.print("Enter new customer's username: ");
 		username = scan.next();
 		System.out.print("Enter customer's password: ");
@@ -85,5 +99,22 @@ public class Employee {
 		UserData.addUser(newUser);
 		
 		adminMenu();
+	}
+	
+	public static void addMovie() {
+		//Clears the buffer to take in new input
+		scan.nextLine();
+		System.out.print("Enter movie name: ");
+		name = scan.nextLine();
+		System.out.print("Enter movie genre: ");
+		genre = scan.nextLine();
+		System.out.print("Enter movie description: ");
+		description = scan.nextLine();
+		
+		Movie newMovie = new Movie(name, genre, description);
+		MovieData.addMovieData(newMovie);
+		
+		//Return to employee menu
+		employeeMenu();	
 	}
 }

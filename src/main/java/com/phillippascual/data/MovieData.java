@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
+import com.phillippascual.util.Customer;
+import com.phillippascual.util.Employee;
+import com.phillippascual.util.Login;
 import com.phillippascual.util.Movie;
 
 public class MovieData {
@@ -44,13 +47,29 @@ public class MovieData {
 		fileIn.close();
 	}
 	
-	public static void addMovie(Movie movie) {
+	public static void addMovieData(Movie movie) {
 		movies.add(movie);
 		log.debug("Movie added.");
 		try {
 			save();
 		} catch (IOException e) {
 			log.debug("Unable to save movie.");
+		}
+	}
+	
+	public static void listMovies() {
+		System.out.println("Movie list:");
+		System.out.println("-----------");
+		System.out.println("");
+		for (Movie m : movies) {
+			System.out.println(m.toString());
+		}
+		System.out.println();
+		
+		if (Login.isEmployee()) {
+			Employee.employeeMenu();
+		} else {
+			Customer.customerMenu();
 		}
 	}
 }
