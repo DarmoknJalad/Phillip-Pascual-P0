@@ -79,9 +79,11 @@ public class MovieData {
 				m.setNumberInStock(m.getNumberInStock() + num);
 				try {
 					save();
+					return;
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+					return;
 				}
 			}
 		}

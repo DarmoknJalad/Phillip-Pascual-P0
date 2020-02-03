@@ -67,6 +67,7 @@ public class Employee {
 			MovieData.listMovies();
 		} else if (input.equals("a")) {
 			//Go to add stock functionality
+			addStock();
 		} else if (input.equals("l")) {
 			System.out.println("Logging out...");
 			System.out.println("");
@@ -122,7 +123,7 @@ public class Employee {
 		employeeMenu();	
 	}
 	
-	public void addStock() {
+	public static void addStock() {
 		scan.nextLine();
 		System.out.print("Enter movie to add stock of: ");
 		name = scan.nextLine();
