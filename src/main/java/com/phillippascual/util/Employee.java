@@ -13,6 +13,7 @@ public class Employee {
 	static String name;
 	static String genre;
 	static String description;
+	static int newStock;
 
 	public static void adminMenu() {
 		System.out.println("ADMINISTRATOR MENU");
@@ -46,6 +47,7 @@ public class Employee {
 		System.out.println("Add (c)ustomer.");
 		System.out.println("Add (m)ovie.");
 		System.out.println("List movie(s).");
+		System.out.println("(A)dd inventory.");
 		System.out.println("(L)ogout.");
 		System.out.println("");
 		System.out.print("Please enter option: ");
@@ -63,6 +65,8 @@ public class Employee {
 		} else if (input.equals("s")) {
 			//Go to list movie method
 			MovieData.listMovies();
+		} else if (input.equals("a")) {
+			//Go to add stock functionality
 		} else if (input.equals("l")) {
 			System.out.println("Logging out...");
 			System.out.println("");
@@ -116,5 +120,17 @@ public class Employee {
 		
 		//Return to employee menu
 		employeeMenu();	
+	}
+	
+	public void addStock() {
+		scan.nextLine();
+		System.out.print("Enter movie to add stock of: ");
+		name = scan.nextLine();
+		System.out.print("Add amount of additional copies: ");
+		newStock = scan.nextInt();
+		
+		MovieData.addInventory(name, newStock);
+		
+		employeeMenu();
 	}
 }
