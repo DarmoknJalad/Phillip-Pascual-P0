@@ -12,13 +12,16 @@ public class Customer {
 		System.out.println("CUSTOMER MENU:");
 		System.out.println("--------------");
 		System.out.println("List (M)ovies.");
+		System.out.println("(L)ogout.");
 		System.out.println("");
 		System.out.print("Please enter option: ");
 		input = scan.next();
 		
-		//TODO: write list movies function
 		if (input.equals("m")) {
 			MovieData.listMovies();
+		} else if (input.equals("l")) {
+			System.out.println("Logging out...");
+			Login.loginMenu();
 		}
 	}
 }
