@@ -127,7 +127,7 @@ public class Employee {
 		scan.nextLine();
 		System.out.print("Enter movie to add stock of: ");
 		name = scan.nextLine();
-		System.out.print("Add amount of additional copies: ");
+		System.out.print("Add number of additional inventory (enter a negative number to lower inventory): ");
 		newStock = scan.nextInt();
 		
 		MovieData.addInventory(name, newStock);

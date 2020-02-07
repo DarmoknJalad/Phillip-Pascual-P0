@@ -89,4 +89,9 @@ public class MovieData {
 		}
 		System.out.println("Movie not found.");
 	}
+	
+	public static ArrayList<Movie> getMovies() {
+		return movies;
+		
+	}
 }
