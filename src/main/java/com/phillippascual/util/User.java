@@ -11,27 +11,54 @@ public class User implements Serializable {
 	private String password;
 	private boolean isEmployee;
 			
+	/*
+	 * Constructor for the User class.  Takes in two String parameters, username and password, and one boolean parameter,
+	 * isEmployee.  The constructor then sets the fields for the newly-constructed User object to the values passed in.
+	 */
 	public User(String username, String password, boolean isEmployee) {
 		this.username = username;
 		this.password = password;
 		this.isEmployee = isEmployee;
 	}
 	
+	/*
+	 * Getter for the username field.
+	 */
 	public String getUsername() {
 		return username;
 	}
+	
+	/*
+	 * Setter for the username field.
+	 */
 	public void setUsername(String username) {
 		this.username = username;
 	}
+	
+	/*
+	 * Getter for the password field.
+	 */
 	public String getPassword() {
 		return password;
 	}
+	
+	/*
+	 * Setter for the password field.
+	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	/*
+	 * Getter for the isEmployee flag.
+	 */
 	public boolean isEmployee() {
 		return isEmployee;
 	}
+	
+	/*
+	 * Setter for the isEmployee flag.
+	 */
 	public void setEmployee(boolean isEmployee) {
 		this.isEmployee = isEmployee;
 	}
