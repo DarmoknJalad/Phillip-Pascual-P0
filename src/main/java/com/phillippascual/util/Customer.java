@@ -8,6 +8,10 @@ public class Customer {
 	static String input;
 	static Scanner scan = new Scanner(System.in);
 	
+	/*
+	 * The customerMenu() method takes in no parameters.  It displays the Customer menu to the user and takes in keyboard
+	 * input.  Based on the input it directs the user to the appropriate menu.
+	 */
 	public static void customerMenu() {
 		System.out.println("CUSTOMER MENU:");
 		System.out.println("--------------");
