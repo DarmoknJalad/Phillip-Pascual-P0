@@ -82,5 +82,9 @@ public class UserData {
 		// Return user back to administrator menu once done listing users
 		Employee.adminMenu();
 	}
+	
+	public static ArrayList<User> getUsers() {
+		return users;
+	}
 
 }
