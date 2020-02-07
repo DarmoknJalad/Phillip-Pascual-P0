@@ -40,6 +40,8 @@ public class Employee {
 		} else if (input.equals("l")) {
 			System.out.println("Logging out...");
 			System.out.println("");
+			//Since Administrator logging out, sets administrator flag to false.
+			Login.administrator = false;
 			Login.loginMenu();
 		} else {
 			System.out.println("Please enter a valid option.");
