@@ -12,6 +12,10 @@ public class Movie implements Serializable {
 	private String description;
 	private int numberInStock;
 	
+	/*
+	 * Constructor for the Movie class.  Takes in three Strings, name, genre, and description and assigns them to the
+	 * fields of the newly-constructed Movie object.
+	 */
 	public Movie(String name, String genre, String description) {
 		this.name = name;
 		this.genre = genre;
@@ -19,34 +23,57 @@ public class Movie implements Serializable {
 		this.numberInStock = 1;	//Setting default in inventory when movie added to 1
 	}
 
+	/*
+	 * Getter for the name field.
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/*
+	 * Setter for the name field.
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/*
+	 * Getter for the genre field.
+	 */
 	public String getGenre() {
 		return genre;
 	}
 
+	/*
+	 * Setter for the genre field.
+	 */
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
 
+	/*
+	 * Getter for the description field.
+	 */
 	public String getDescription() {
 		return description;
 	}
 
+	/*
+	 * Setter for the description field.
+	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+	/*
+	 * Getter for the numberInStock field.
+	 */
 	public int getNumberInStock() {
 		return numberInStock;
 	}
 
+	/*
+	 * Setter for the numberInStock field.
+	 */
 	public void setNumberInStock(int numberInStock) {
 		this.numberInStock = numberInStock;
 	}
@@ -96,7 +123,10 @@ public class Movie implements Serializable {
 		return "Name = " + name + ", Genre = " + genre + ", Description = " + description + ", Number Available = "
 				+ numberInStock + "]";
 	}
-	
+	/*
+	 * The printMovie() method takes in no parameters.  It returns a string filled with the value of the fields of the
+	 * object that the method is called on.
+	 */
 	public String printMovie() {
 		return "Name = " + name + "; Genre = " + genre + "; Description = " + description + "; Number Available = "
 				+ numberInStock;
