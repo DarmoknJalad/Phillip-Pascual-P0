@@ -17,6 +17,7 @@ public class Login {
 	static String password;
 	static Scanner scan = new Scanner(System.in);
 	static boolean employee;
+	static boolean administrator;
 
 	public static void loginMenu() {
 
@@ -34,7 +35,7 @@ public class Login {
 			log.debug("Administrator logged in.");
 			System.out.println("Administrator access granted!");
 			System.out.println("");
-
+			administrator = true;
 			// Shows the administrator menu
 			Employee.adminMenu();
 		} else {
