@@ -9,9 +9,6 @@ import com.phillippascual.data.UserData;
 
 public class Login {
 	private static Logger log = Logger.getLogger(Login.class);
-	static {
-		BasicConfigurator.configure();
-	}
 
 	static String username;
 	static String password;
@@ -53,8 +50,10 @@ public class Login {
 		}
 		
 		if (employee) {
+			log.debug("Employee " + username + " logged in.");
 			Employee.employeeMenu();
 		} else {
+			log.debug("Customer " + username + " logged in.");
 			Customer.customerMenu();
 		}
 	}

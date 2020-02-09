@@ -58,6 +58,7 @@ public class Employee {
 		System.out.println("EMPLOYEE MENU");
 		System.out.println("Add (c)ustomer.");
 		System.out.println("Add (m)ovie.");
+		System.out.println("(R)emove movie.");
 		System.out.println("List movie(s).");
 		System.out.println("(A)dd inventory.");
 		System.out.println("(L)ogout.");
@@ -74,6 +75,8 @@ public class Employee {
 			// Go to create movie functionality
 			System.out.println("");
 			addMovie();
+		} else if (input.equals("r")) {
+			removeMovie();
 		} else if (input.equals("s")) {
 			// Go to list movie method
 			MovieData.listMovies();
@@ -163,6 +166,15 @@ public class Employee {
 		employeeMenu();
 	}
 
+	public static void removeMovie() {
+		scan.nextLine();
+		System.out.print("Enter movie name to remove: ");
+		name = scan.nextLine();
+		
+		MovieData.deleteMovie(name);
+		
+		employeeMenu();
+	}
 	/*
 	 * The addStock() method takes no parameters. It prompts the user for the name and number of additional copies of the
 	 * movie whose inventory is to be modified.  Once the appropriate input is received, it invokes the addInventory() 

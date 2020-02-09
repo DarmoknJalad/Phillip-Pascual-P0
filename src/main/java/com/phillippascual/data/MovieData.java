@@ -7,7 +7,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
 import com.phillippascual.util.Customer;
@@ -17,9 +16,6 @@ import com.phillippascual.util.Movie;
 
 public class MovieData {
 	private static Logger log = Logger.getLogger(MovieData.class);
-	static {
-		BasicConfigurator.configure();
-	}
 	
 	private static ArrayList<Movie> movies = new ArrayList<Movie>();
 	
@@ -91,6 +87,21 @@ public class MovieData {
 		} else {
 			Customer.customerMenu();
 		}
+	}
+	
+	public static void deleteMovie(String movieName) {
+		for (Movie m : movies) {
+			if (m.getName().equals(movieName)) {
+				movies.remove(m);
+				log.debug("Movie deleted.");
+				try {
+					save();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		System.out.println("Movie not found.");
 	}
 	
 	/*
