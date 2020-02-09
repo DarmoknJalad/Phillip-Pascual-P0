@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import org.apache.log4j.Logger;
 
@@ -89,14 +90,23 @@ public class MovieData {
 		}
 	}
 	
+	/*
+	 * The deleteMovie() method takes in one String parameter.  It iterates through the 'movies' ArrayList, and if the
+	 * Movie object at the iterator has a name that equals the passed-in String, it removes that element from the ArrayList
+	 * and saves the data in ArrayList 'movies' to 'movies.ser'.  If the movie is not found it advises the user that the
+	 * movie has not been found.
+	 */
 	public static void deleteMovie(String movieName) {
-		for (Movie m : movies) {
-			if (m.getName().equals(movieName)) {
-				movies.remove(m);
+		Iterator<Movie> itr = movies.iterator();
+		while (itr.hasNext()) {
+			Movie next = itr.next();
+			if (next.getName().equals(movieName)) {
+				itr.remove();
 				log.debug("Movie deleted.");
 				try {
 					save();
 				} catch (IOException e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
