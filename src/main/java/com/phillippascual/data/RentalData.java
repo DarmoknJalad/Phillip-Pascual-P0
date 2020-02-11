@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import org.apache.log4j.Logger;
 
@@ -56,6 +57,25 @@ public class RentalData {
 			save();
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	public static void checkInRental(String movieName, String userName) {
+		Iterator<Rental> itr = rentals.iterator();
+		while (itr.hasNext()) {
+			Rental next = itr.next();
+			if (next.getMovieName().equals(movieName) && next.getRenterName().equals(userName)) {
+				MovieData.addInventory(movieName, 1);
+				itr.remove();
+				log.debug(movieName + " rented by " + userName + " returned.");
+				try {
+					save();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				return;
+			}
+			System.out.println("Rental not found.");
 		}
 	}
 }

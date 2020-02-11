@@ -15,6 +15,8 @@ public class Employee {
 	static String genre;
 	static String description;
 	static int newStock;
+	static String movieName;
+	static String renterName;
 
 	/*
 	 * The adminMenu() method takes no parameters. It displays the Administrator
@@ -63,6 +65,7 @@ public class Employee {
 		System.out.println("List movie(s).");
 		System.out.println("(A)dd inventory.");
 		System.out.println("Lis(t) Rentals");
+		System.out.println("C(h)eck in Rental.");
 		System.out.println("(L)ogout.");
 		System.out.println("");
 		System.out.print("Please enter option: ");
@@ -88,6 +91,9 @@ public class Employee {
 		} else if (input.equals("t")) {
 			//Go to list rentals method
 			listRentals();
+		} else if (input.equals("h")) {
+			//Go to check in method
+			checkInRental();
 		} else if (input.equals("l")) {
 			System.out.println("Logging out...");
 			System.out.println("");
@@ -203,6 +209,18 @@ public class Employee {
 		System.out.println("----------------");
 		RentalData.listAllRentals();
 		System.out.println("");
+		employeeMenu();
+	}
+	
+	public static void checkInRental() {
+		scan.nextLine();
+		System.out.print("Enter customer name: ");
+		renterName = scan.nextLine();
+		System.out.print("Enter movie name: ");
+		movieName = scan.nextLine();
+		
+		RentalData.checkInRental(movieName, renterName);
+		
 		employeeMenu();
 	}
 }
