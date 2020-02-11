@@ -70,4 +70,18 @@ public class RentalData {
 		}
 		System.out.println("Rental not found.");
 	}
+	
+	public static ArrayList<Rental> listAllRentals() {
+		return rentals;
+	}
+	
+	public static void listRentals(String renterName) {
+		Iterator<Rental> itr = rentals.iterator();
+		while (itr.hasNext()) {
+			Rental next = itr.next();
+			if (next.getRenter().equals(renterName)) {
+				System.out.println(next.toString());
+			}
+		}
+	}
 }
