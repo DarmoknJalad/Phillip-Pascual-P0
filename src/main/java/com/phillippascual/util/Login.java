@@ -70,6 +70,14 @@ public class Login {
 	public static void setEmployee(boolean employee) {
 		Login.employee = employee;
 	}
+
+	public static String getUsername() {
+		return username;
+	}
+
+	public static void setUsername(String username) {
+		Login.username = username;
+	}
 	
 	
 

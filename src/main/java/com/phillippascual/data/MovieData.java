@@ -138,6 +138,17 @@ public class MovieData {
 		System.out.println("Movie not found.");
 	}
 	
+	public static boolean isAvailable(String movieName) {
+		Iterator<Movie> itr = movies.iterator();
+		while (itr.hasNext()) {
+			Movie next = itr.next();
+			if (next.getName().equals(movieName) && next.getNumberInStock() == 0) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
 	/*
 	 * The getMovies() method takes in no parameters, and simply returns the movies ArrayList.
 	 */

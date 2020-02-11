@@ -1,6 +1,7 @@
 import java.io.IOException;
 
 import com.phillippascual.data.MovieData;
+import com.phillippascual.data.RentalData;
 
 //import org.apache.log4j.BasicConfigurator;
 //import org.apache.log4j.Logger;
@@ -21,6 +22,12 @@ public class Mockbuster {
 		//Loads movie data.
 		try {
 			MovieData.load();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			RentalData.load();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
