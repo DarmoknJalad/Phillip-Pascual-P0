@@ -3,6 +3,7 @@ package com.phillippascual.util;
 import java.util.Scanner;
 
 import com.phillippascual.data.MovieData;
+import com.phillippascual.data.RentalData;
 import com.phillippascual.data.UserData;
 
 public class Employee {
@@ -61,6 +62,7 @@ public class Employee {
 		System.out.println("(R)emove movie.");
 		System.out.println("List movie(s).");
 		System.out.println("(A)dd inventory.");
+		System.out.println("Lis(t) Rentals");
 		System.out.println("(L)ogout.");
 		System.out.println("");
 		System.out.print("Please enter option: ");
@@ -83,6 +85,9 @@ public class Employee {
 		} else if (input.equals("a")) {
 			// Go to add stock functionality
 			addStock();
+		} else if (input.equals("t")) {
+			//Go to list rentals method
+			listRentals();
 		} else if (input.equals("l")) {
 			System.out.println("Logging out...");
 			System.out.println("");
@@ -190,6 +195,14 @@ public class Employee {
 
 		MovieData.addInventory(name, newStock);
 
+		employeeMenu();
+	}
+	
+	public static void listRentals() {
+		System.out.println("Current rentals:");
+		System.out.println("----------------");
+		RentalData.listAllRentals();
+		System.out.println("");
 		employeeMenu();
 	}
 }

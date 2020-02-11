@@ -1,6 +1,9 @@
 package com.phillippascual.util;
 
-public class Rental {
+import java.io.Serializable;
+import java.util.ArrayList;
+
+public class Rental implements Serializable {
 	private String movieName;
 	private String renterName;
 	
@@ -51,8 +54,7 @@ public class Rental {
 	}
 	@Override
 	public String toString() {
-		return "Rental [movieName=" + movieName + ", renterName=" + renterName + "]";
+		return "Movie Name: " + movieName + "; Rented to: " + renterName;
 	}
-	
 	
 }

@@ -153,7 +153,6 @@ public class MovieData {
 	 * The getMovies() method takes in no parameters, and simply returns the movies ArrayList.
 	 */
 	public static ArrayList<Movie> getMovies() {
-		return movies;
-		
+		return movies;	
 	}
 }

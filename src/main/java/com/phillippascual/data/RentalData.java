@@ -40,8 +40,11 @@ public class RentalData {
 		rentalsIn.close();
 	}
 	
-	public static ArrayList<Rental> listAllRentals() {
-		return rentals;
+	public static void listAllRentals() {
+		for (Rental r : rentals) {
+			System.out.println(r.toString());
+		}
+		
 	}
 	
 	public static void addRental(String movieName, String userName) {
