@@ -176,7 +176,11 @@ public class Employee {
 		// Return to employee menu
 		employeeMenu();
 	}
-
+	
+	/*
+	 * The removeMovie() method takes in no parameters.  It prompts the user for the name of the movie to 
+	 * remove from inventory, then passes that input to the deleteMovie() method in the MovieData class.
+	 */
 	public static void removeMovie() {
 		scan.nextLine();
 		System.out.print("Enter movie name to remove: ");
@@ -204,6 +208,11 @@ public class Employee {
 		employeeMenu();
 	}
 	
+	/*
+	 * The listRentals() method takes no parameters.  It serves as a gateway to the listAllRentals() method in
+	 * the RentalData class.  Once the listAllRentals() method is completed, it returns the user to the
+	 * employee menu.
+	 */
 	public static void listRentals() {
 		System.out.println("Current rentals:");
 		System.out.println("----------------");
@@ -212,6 +221,12 @@ public class Employee {
 		employeeMenu();
 	}
 	
+	/*
+	 * The checkInRental() method takes in no parameters.  It prompts the user for the name of the customer
+	 * renting the movie to be checked in, then asked for the specific movie.  It then passes these inputs to
+	 * the checkInRental() method in the RentalData class.  Once that method is completed, it returns the
+	 * user to the employee menu.
+	 */
 	public static void checkInRental() {
 		scan.nextLine();
 		System.out.print("Enter customer name: ");
