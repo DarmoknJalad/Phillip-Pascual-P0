@@ -3,6 +3,7 @@ package com.phillippascual.util;
 import java.util.Scanner;
 
 import com.phillippascual.data.MovieData;
+import com.phillippascual.data.RentalData;
 
 public class Customer {
 	static String input;
@@ -16,6 +17,8 @@ public class Customer {
 		System.out.println("CUSTOMER MENU:");
 		System.out.println("--------------");
 		System.out.println("List (M)ovies.");
+		System.out.println("(R)ent movie.");
+		System.out.println("List my rental(s).");
 		System.out.println("(L)ogout.");
 		System.out.println("");
 		System.out.print("Please enter option: ");
@@ -23,9 +26,36 @@ public class Customer {
 		
 		if (input.equals("m")) {
 			MovieData.listMovies();
+		} else if (input.equals("r")) {
+			//Rent movie method
+			rentMovie();
+		} else if (input.equals("s")) {
+			//List rentals method
+			listRentals();
 		} else if (input.equals("l")) {
 			System.out.println("Logging out...");
 			Login.loginMenu();
 		}
+	}
+	
+	public static void rentMovie() {
+		scan.nextLine();
+		System.out.print("Enter which movie to rent: ");
+		input = scan.nextLine();
+		if (MovieData.isAvailable(input)) {
+			RentalData.addRental(input, Login.getUsername());
+			System.out.println("Movie successfully rented.");
+			customerMenu();
+		} else {
+			System.out.println("Movie not available.");
+			customerMenu();
+		}
+	}
+	
+	public static void listRentals() {
+		System.out.println("Your rentals:");
+		System.out.println("-------------");
+		RentalData.listRentals(Login.getUsername());
+		customerMenu();
 	}
 }

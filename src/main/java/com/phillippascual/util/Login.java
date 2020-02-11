@@ -2,6 +2,7 @@ package com.phillippascual.util;
 
 import java.util.Scanner;
 
+import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
 import com.phillippascual.data.UserData;

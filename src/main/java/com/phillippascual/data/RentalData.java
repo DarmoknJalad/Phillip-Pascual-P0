@@ -1,5 +1,6 @@
 package com.phillippascual.data;
 
+import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -36,6 +37,8 @@ public class RentalData {
 		} catch (ClassNotFoundException e) {
 			log.debug("Rentals file not found!");
 			e.printStackTrace();
+		} catch (EOFException e) {
+			log.debug("Rentals file empty.");
 		}
 		inputStream.close();
 		fileIn.close();
